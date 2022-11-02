@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rock, Paper or Scissor</title>
+        <script>
+            // 1-Rock, 2-Paper, 3-Scissor
+            let player = 0;
+            let pc = 2
+            player = prompt("Choose: 1-Rock, 2-Paper, 3-Scissor")
+
+            if(player == 1) {
+                alert("You choice 🪨 (👊)")
+            } else if(player == 2) {
+                alert("You choice paper 📄 (✋)")
+            } else if(player == 3) {
+                alert("You choice scissor ✂️ (✌️)")
+            } else {
+                alert("You lose")
+            }
+
+            if(pc == 1) {
+                alert("PC choice 🪨 (👊)")
+            } else if(pc == 2) {
+                alert("PC choice paper 📄 (✋)")
+            } else if(pc == 3) {
+                alert("PC choice scissor ✂️ (✌️)")
+            } else {
+                alert("PC lose")
+            }
+
+            if(pc == player) {
+                alert("TIE")
+            } else if(player == 1 && pc == 3) {
+                alert("You WIN")
+            } else if(player == 2 && pc == 1) {
+                alert("You WIN")
+            } else if(player == 3 && pc == 2) {
+                alert("You WIN")
+            } else {
+                alert("You LOSE")
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Rock, Paper or Scissor</h1>
+    </body>
+</html>
