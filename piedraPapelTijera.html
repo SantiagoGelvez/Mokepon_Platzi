@@ -9,30 +9,26 @@
                 return Math.floor(Math.random() * (max - min + 1) + min)
             }
 
-            // 1-Rock, 2-Paper, 3-Scissor
+            function choice(move) {
+                let result = ""
+                
+                if (move == 1) {
+                    return "🪨 (👊)"
+                } else if(move == 2) {
+                    return "paper 📄 (✋)"
+                } else if(move == 3) {
+                    return "scissor ✂️ (✌️)"
+                } else {
+                    return "doesnt exists"
+                }
+            }
+
             let player = 0;
             let pc = randomChoice(1, 3)
             player = prompt("Choose: 1-Rock, 2-Paper, 3-Scissor")
 
-            if(player == 1) {
-                alert("You choice 🪨 (👊)")
-            } else if(player == 2) {
-                alert("You choice paper 📄 (✋)")
-            } else if(player == 3) {
-                alert("You choice scissor ✂️ (✌️)")
-            } else {
-                alert("You lose")
-            }
-
-            if(pc == 1) {
-                alert("PC choice 🪨 (👊)")
-            } else if(pc == 2) {
-                alert("PC choice paper 📄 (✋)")
-            } else if(pc == 3) {
-                alert("PC choice scissor ✂️ (✌️)")
-            } else {
-                alert("PC lose")
-            }
+            alert("Human choice " + choice(player))
+            alert("PC choice " + choice(pc))
 
             if(pc == player) {
                 alert("TIE")
