@@ -24,23 +24,39 @@
             }
 
             let player = 0;
-            let pc = randomChoice(1, 3)
-            player = prompt("Choose: 1-Rock, 2-Paper, 3-Scissor")
+            let pc = 0;
+            let winings = 0;
+            let loses = 0;
 
-            alert("Human choice " + choice(player))
-            alert("PC choice " + choice(pc))
+            while (winings < 3 && loses < 3) {
+                pc = randomChoice(1, 3)
+                player = prompt("Choose: 1-Rock, 2-Paper, 3-Scissor")
 
-            if(pc == player) {
-                alert("TIE")
-            } else if(player == 1 && pc == 3) {
-                alert("You WIN")
-            } else if(player == 2 && pc == 1) {
-                alert("You WIN")
-            } else if(player == 3 && pc == 2) {
-                alert("You WIN")
-            } else {
-                alert("You LOSE")
+                alert("Human choice " + choice(player))
+                alert("PC choice " + choice(pc))
+
+                if(pc == player) {
+                    alert("TIE")
+
+                } else if(player == 1 && pc == 3) {
+                    winings += 1;
+                    alert("You WIN");
+
+                } else if(player == 2 && pc == 1) {
+                    winings += 1;
+                    alert("You WIN")
+
+                } else if(player == 3 && pc == 2) {
+                    winings += 1;
+                    alert("You WIN")
+
+                } else {
+                    loses += 1;
+                    alert("You LOSE")
+                }
             }
+
+            alert("You win " + winings + " times. You lose " + loses + " times")
         </script>
     </head>
 
