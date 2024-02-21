@@ -4,17 +4,20 @@ function initGame() {
 }
 
 function selectPet() {
-    hipodoge = document.getElementById('hipodoge')
-    capipepo = document.getElementById('capipepo')
-    ratigueya = document.getElementById('ratigueya')
-    if (hipodoge.checked) {
-        alert("You select hipodoge")
-    } else if (capipepo.checked) {
-        alert("You select capipepo")
-    } else if (ratigueya.checked) {
-        alert("You select ratigueya")
+    let inputHipodoge = document.getElementById("hipodoge")
+    let inputCapipepo = document.getElementById("capipepo")
+    let inputRatigueya = document.getElementById("ratigueya")
+
+    let spanPetSelected = document.getElementById("pet-selected")
+
+    if (inputHipodoge.checked) {
+        spanPetSelected.innerHTML = "Hipodoge"
+    } else if (inputCapipepo.checked) {
+        spanPetSelected.innerHTML = "Capipepo"
+    } else if (inputRatigueya.checked) {
+        spanPetSelected.innerHTML = "Ratigueya"
     } else {
-        alert("Pet no selected yet")
+        alert("Select a pet")
     }
 }
 
