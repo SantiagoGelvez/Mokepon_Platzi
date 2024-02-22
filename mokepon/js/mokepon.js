@@ -1,6 +1,8 @@
 let petAttack = null
 let enemyAttack = null
 let resultFight = null
+let petLives = 3
+let enemyLives = 3
 
 function initGame() {
     let buttonPet = document.getElementById("button-pet")
@@ -63,21 +65,32 @@ function randomChoice(min, max) {
 }
 
 function getFightResult() {
+
+    let spanPetLives = document.getElementById("pet-selected-lives")
+    let spanEnemyPetLives = document.getElementById("enemy-pet-lives")
+
     if(petAttack == enemyAttack) {
         resultFight = "It's a TIE 🙈"
 
     } else if(petAttack == "Fire 🔥" && enemyAttack == "Earth 🌱") {
         resultFight = "You WIN 🥳"
+        enemyLives--
 
     } else if(petAttack == "Water 💧" && enemyAttack == "Fire 🔥") {
         resultFight = "You WIN 🥳"
+        enemyLives--
 
     } else if(petAttack == "Earth 🌱" && enemyAttack == "Water 💧") {
         resultFight = "You WIN 🥳"
+        enemyLives--
 
     } else {
         resultFight = "You LOSE ☠️"
+        petLives--
     }
+
+    spanPetLives.innerHTML = petLives
+    spanEnemyPetLives.innerHTML = enemyLives
 
     createMessage()
 }
