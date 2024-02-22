@@ -1,5 +1,6 @@
 let petAttack = null
 let enemyAttack = null
+let resultFight = null
 
 function initGame() {
     let buttonPet = document.getElementById("button-pet")
@@ -48,38 +49,65 @@ function getEnemyPet() {
     }
 }
 
+function createMessage() {
+    let sectionMessage = document.getElementById("messages")
+    
+    let newMessage = document.createElement("p")
+    newMessage.innerHTML = "Your pet attacks with " + petAttack + ". The enemy's pet attack with " + enemyAttack + " - " + resultFight
+    
+    sectionMessage.appendChild(newMessage)
+}
+
 function randomChoice(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function getFightResult() {
+    if(petAttack == enemyAttack) {
+        resultFight = "It's a TIE 🙈"
+
+    } else if(petAttack == "Fire 🔥" && enemyAttack == "Earth 🌱") {
+        resultFight = "You WIN 🥳"
+
+    } else if(petAttack == "Water 💧" && enemyAttack == "Fire 🔥") {
+        resultFight = "You WIN 🥳"
+
+    } else if(petAttack == "Earth 🌱" && enemyAttack == "Water 💧") {
+        resultFight = "You WIN 🥳"
+
+    } else {
+        resultFight = "You LOSE ☠️"
+    }
+
+    createMessage()
 }
 
 function getEnemyAttack() {
     let randomAttack = randomChoice(1, 3)
 
     if (randomAttack == 1) {
-        enemyAttack = "Fire"
+        enemyAttack = "Fire 🔥"
     } else if (randomAttack == 2) {
-        enemyAttack = "Water"
+        enemyAttack = "Water 💧"
     } else {
-        enemyAttack = "Earth"
+        enemyAttack = "Earth 🌱"
     }
-    alert("Enemy's pet attack with " + enemyAttack)
+
+    getFightResult()
 }
 
 function fireAttack() {
-    petAttack = "Fire"
-    alert("Your pet attack with " + petAttack)
+    petAttack = "Fire 🔥"
     getEnemyAttack()
 }
 
 function waterAttack() {
-    petAttack = "Water"
-    alert("Your pet attack with " + petAttack)
+    petAttack = "Water 💧"
     getEnemyAttack()
 }
 
 function earthAttack() {
-    petAttack = "Earth"
-    alert("Your pet attack with " + petAttack)
+    petAttack = "Earth 🌱"
     getEnemyAttack()
 }
 
