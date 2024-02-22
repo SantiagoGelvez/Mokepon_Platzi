@@ -16,6 +16,9 @@ function initGame() {
     
     let buttonEarth = document.getElementById("button-earth")
     buttonEarth.addEventListener("click", earthAttack)
+
+    let buttonRestart = document.getElementById("button-restart")
+    buttonRestart.addEventListener("click", restartGame)
 }
 
 function selectPet() {
@@ -60,6 +63,24 @@ function createMessage() {
     sectionMessage.appendChild(newMessage)
 }
 
+function createFinalMessage(result) {
+    let sectionMessage = document.getElementById("messages")
+    
+    let newMessage = document.createElement("p")
+    newMessage.innerHTML = result
+    
+    sectionMessage.appendChild(newMessage)
+
+    let buttonFire = document.getElementById("button-fire")
+    buttonFire.disabled = true
+    
+    let buttonWater = document.getElementById("button-water")
+    buttonWater.disabled = true
+    
+    let buttonEarth = document.getElementById("button-earth")
+    buttonEarth.disabled = true
+}
+
 function randomChoice(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -93,6 +114,15 @@ function getFightResult() {
     spanEnemyPetLives.innerHTML = enemyLives
 
     createMessage()
+    getWinner()
+}
+
+function getWinner() {
+    if (enemyLives == 0) {
+        createFinalMessage("Congrats!!! You are the WINNER! 🏆⭐")
+    } else if (petLives == 0) {
+        createFinalMessage("I'm sorry, you LOSE ... 🫂⛈️")
+    }
 }
 
 function getEnemyAttack() {
@@ -124,5 +154,9 @@ function earthAttack() {
     getEnemyAttack()
 }
 
+
+function restartGame() {
+    location.reload()
+}
 
 window.addEventListener("load", initGame)
