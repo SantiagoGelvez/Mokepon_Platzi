@@ -5,23 +5,26 @@ let petLives = 3
 let enemyLives = 3
 
 function initGame() {
+    let sectionAttackSelection = document.getElementById("attack-selection")
+    sectionAttackSelection.style.display = "none"
+
     let buttonPet = document.getElementById("button-pet")
     buttonPet.addEventListener("click", selectPet)
     
     let buttonFire = document.getElementById("button-fire")
     buttonFire.addEventListener("click", fireAttack)
-    
     let buttonWater = document.getElementById("button-water")
     buttonWater.addEventListener("click", waterAttack)
-    
     let buttonEarth = document.getElementById("button-earth")
     buttonEarth.addEventListener("click", earthAttack)
 
     let buttonRestart = document.getElementById("button-restart")
     buttonRestart.addEventListener("click", restartGame)
+    buttonRestart.style.display = "none"
 }
 
 function selectPet() {
+    let isPetSelected = false
     let inputHipodoge = document.getElementById("hipodoge")
     let inputCapipepo = document.getElementById("capipepo")
     let inputRatigueya = document.getElementById("ratigueya")
@@ -30,15 +33,25 @@ function selectPet() {
 
     if (inputHipodoge.checked) {
         spanPetSelected.innerHTML = "Hipodoge"
+        isPetSelected = true
     } else if (inputCapipepo.checked) {
         spanPetSelected.innerHTML = "Capipepo"
+        isPetSelected = true
     } else if (inputRatigueya.checked) {
         spanPetSelected.innerHTML = "Ratigueya"
+        isPetSelected = true
     } else {
         alert("Select a pet")
     }
 
-    getEnemyPet()
+    if (isPetSelected) {
+        let sectionAttackSelection = document.getElementById("attack-selection")
+        let sectionPetSelection = document.getElementById("pet-selection")
+        
+        sectionAttackSelection.style.display = "block"
+        getEnemyPet()
+        sectionPetSelection.style.display = "none"
+    }
 }
 
 function getEnemyPet() {
@@ -73,12 +86,14 @@ function createFinalMessage(result) {
 
     let buttonFire = document.getElementById("button-fire")
     buttonFire.disabled = true
-    
     let buttonWater = document.getElementById("button-water")
     buttonWater.disabled = true
-    
     let buttonEarth = document.getElementById("button-earth")
     buttonEarth.disabled = true
+
+    let buttonRestart = document.getElementById("button-restart")
+    buttonRestart.addEventListener("click", restartGame)
+    buttonRestart.style.display = "block"
 }
 
 function randomChoice(min, max) {
@@ -153,7 +168,6 @@ function earthAttack() {
     petAttack = "Earth 🌱"
     getEnemyAttack()
 }
-
 
 function restartGame() {
     location.reload()
