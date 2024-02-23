@@ -1,26 +1,48 @@
-.titulo {
-    color: palegreen;
-    width: 300px;
-    height: 50px;
-    background-color: tomato;
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+body {
+    font-family: "Anta", sans-serif;
+    background-color: #F38181;
 }
 
-#pet-selection {
+#character-selection {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     justify-content: center;
     align-items: center;
 }
 
-.mokepon-card {
+.title {
+    color: #EAFFD0;
+    font-size: 48px;
+}
+
+.subtitle {
+    color: #EAFFD0;
+    font-size: 20px;
+}
+
+.cards {
+    display: flex;
+    gap: 10px;
+}
+
+.character-card {
     box-sizing: border-box;
-    background-color: aquamarine;
-    width: 100px;
+    background-color: #FCE38A;
+    width: 180px;
     height: 100px;
     padding: 10px;
     margin: 10px;
-    border: 1px solid chocolate;
+    border: 2px solid #EAFFD0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.character-card img {
+    height: 80px;
 }
 
 input {

@@ -3,35 +3,52 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mokepon</title>
+        <title>Avatar</title>
         <script src="./js/mokepon.js"></script>
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>        
-        <section id="pet-selection">
-            <h1 class="titulo">Mokepon! 🔥💧🌱</h1>
+        <section id="character-selection">
+            <h1 class="title">Avatar</h1>
 
-            <h2>Choose your pet: </h2>
+            <h2 class="subtitle">Choose your character: </h2>
+
+            <div class="cards">
+                <input type="radio" name="character" id="aang">
+                <label class="character-card" for="aang">
+                    <p>Aang</p>
+                    <img src="./assets/aang.webp" alt="Aang">
+                </label>
+                
+                <input type="radio" name="character" id="katara">
+                <label class="character-card" for="katara">
+                    <p>Katara</p>
+                    <img src="./assets/katara.webp" alt="Katara">
+                </label>
+                
+                <input type="radio" name="character" id="toph">
+                <label class="character-card" for="toph">
+                    <p>Toph</p>
+                    <img src="./assets/toph.webp" alt="Toph">
+                </label>
+
+                <input type="radio" name="character" id="zuko">
+                <label class="character-card" for="zuko">
+                    <p>Zuko</p>
+                    <img src="./assets/zuko.webp" alt="Zuko">
+                </label>
+            </div>
             
-            <input type="radio" name="pet" id="hipodoge">
-            <label class="mokepon-card" for="hipodoge">Hipodoge</label>
-            
-            <input type="radio" name="pet" id="capipepo">
-            <label class="mokepon-card" for="capipepo">Capipepo</label>
-            
-            <input type="radio" name="pet" id="ratigueya">
-            <label class="mokepon-card" for="ratigueya">Ratigueya</label>
-            
-            <button id="button-pet">Select</button>
+            <button id="button-select-character">Select</button>
         </section>
         
         <section id="attack-selection">
-            <h1 class="titulo">Mokepon! 🔥💧🌱</h1>
+            <h1 class="titulo">Avatar</h1>
 
             <h2>Choose your attack: </h2>
             
-            <p>Your pet <span id="pet-selected"></span> has <span id="pet-selected-lives">3</span> lives</p>
-            <p>The enemy's pet <span id="enemy-pet"></span> has <span id="enemy-pet-lives">3</span> lives</p>
+            <p>Your character <span id="character-selected"></span> has <span id="character-selected-lives">3</span> lives</p>
+            <p>The enemy's character <span id="enemy-character"></span> has <span id="enemy-character-lives">3</span> lives</p>
             
             <p>
                 <button id="button-fire">Fire 🔥</button>

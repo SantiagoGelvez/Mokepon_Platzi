@@ -1,15 +1,19 @@
 let petAttack = null
 let enemyAttack = null
 let resultFight = null
-let petLives = 3
+let characterLives = 3
 let enemyLives = 3
+
+function randomChoice(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 function initGame() {
     let sectionAttackSelection = document.getElementById("attack-selection")
     sectionAttackSelection.style.display = "none"
 
-    let buttonPet = document.getElementById("button-pet")
-    buttonPet.addEventListener("click", selectPet)
+    let buttonSelectCharacter = document.getElementById("button-select-character")
+    buttonSelectCharacter.addEventListener("click", selectCharacter)
     
     let buttonFire = document.getElementById("button-fire")
     buttonFire.addEventListener("click", fireAttack)
@@ -23,48 +27,116 @@ function initGame() {
     buttonRestart.style.display = "none"
 }
 
-function selectPet() {
-    let isPetSelected = false
-    let inputHipodoge = document.getElementById("hipodoge")
-    let inputCapipepo = document.getElementById("capipepo")
-    let inputRatigueya = document.getElementById("ratigueya")
+function selectCharacter() {
+    let isCharacterSelected = false
+    let inputAnng = document.getElementById("aang")
+    let inputKatara = document.getElementById("katara")
+    let inputToph = document.getElementById("toph")
+    let inputZuko = document.getElementById("zuko")
 
-    let spanPetSelected = document.getElementById("pet-selected")
+    let spancharacterSelected = document.getElementById("character-selected")
 
-    if (inputHipodoge.checked) {
-        spanPetSelected.innerHTML = "Hipodoge"
-        isPetSelected = true
-    } else if (inputCapipepo.checked) {
-        spanPetSelected.innerHTML = "Capipepo"
-        isPetSelected = true
-    } else if (inputRatigueya.checked) {
-        spanPetSelected.innerHTML = "Ratigueya"
-        isPetSelected = true
+    if (inputAnng.checked) {
+        spancharacterSelected.innerHTML = "Aang"
+        isCharacterSelected = true
+    } else if (inputKatara.checked) {
+        spancharacterSelected.innerHTML = "Katara"
+        isCharacterSelected = true
+    } else if (inputToph.checked) {
+        spancharacterSelected.innerHTML = "Toph"
+        isCharacterSelected = true
+    } else if (inputZuko.checked) {
+        spancharacterSelected.innerHTML = "Zuko"
+        isCharacterSelected = true
     } else {
-        alert("Select a pet")
+        alert("Select a character")
     }
 
-    if (isPetSelected) {
+    if (isCharacterSelected) {
         let sectionAttackSelection = document.getElementById("attack-selection")
-        let sectionPetSelection = document.getElementById("pet-selection")
+        let sectionCharacterSelection = document.getElementById("character-selection")
         
         sectionAttackSelection.style.display = "block"
-        getEnemyPet()
-        sectionPetSelection.style.display = "none"
+        getEnemyCharacter()
+        sectionCharacterSelection.style.display = "none"
     }
 }
 
-function getEnemyPet() {
-    let randomPet = randomChoice(1, 3)
-    let spanEnemyPet = document.getElementById("enemy-pet")
+function getEnemyCharacter() {
+    let randomCharacter = randomChoice(1, 4)
+    let spanEnemyCharacter = document.getElementById("enemy-character")
     
-    if (randomPet == 1) {
-        spanEnemyPet.innerHTML = "Hipodoge"
-    } else if (randomPet == 2) {
-        spanEnemyPet.innerHTML = "Capipepo"
+    if (randomCharacter == 1) {
+        spanEnemyCharacter.innerHTML = "Aang"
+    } else if (randomCharacter == 2) {
+        spanEnemyCharacter.innerHTML = "Katara"
+    } else if (randomCharacter == 3) {
+        spanEnemyCharacter.innerHTML = "Toph"
     } else {
-        spanEnemyPet.innerHTML = "Ratigueya"
+        spanEnemyCharacter.innerHTML = "Zuko"
     }
+}
+
+
+function fireAttack() {
+    petAttack = "Fire 🔥"
+    getEnemyAttack()
+}
+
+function waterAttack() {
+    petAttack = "Water 💧"
+    getEnemyAttack()
+}
+
+function earthAttack() {
+    petAttack = "Earth 🌱"
+    getEnemyAttack()
+}
+
+function getEnemyAttack() {
+    let randomAttack = randomChoice(1, 3)
+
+    if (randomAttack == 1) {
+        enemyAttack = "Fire 🔥"
+    } else if (randomAttack == 2) {
+        enemyAttack = "Water 💧"
+    } else {
+        enemyAttack = "Earth 🌱"
+    }
+
+    getFightResult()
+}
+
+function getFightResult() {
+
+    let spanCharacterLives = document.getElementById("character-selected-lives")
+    let spanEnemyCharacterLives = document.getElementById("enemy-character-lives")
+
+    if(petAttack == enemyAttack) {
+        resultFight = "It's a TIE 🙈"
+
+    } else if(petAttack == "Fire 🔥" && enemyAttack == "Earth 🌱") {
+        resultFight = "You WIN 🥳"
+        enemyLives--
+
+    } else if(petAttack == "Water 💧" && enemyAttack == "Fire 🔥") {
+        resultFight = "You WIN 🥳"
+        enemyLives--
+
+    } else if(petAttack == "Earth 🌱" && enemyAttack == "Water 💧") {
+        resultFight = "You WIN 🥳"
+        enemyLives--
+
+    } else {
+        resultFight = "You LOSE ☠️"
+        characterLives--
+    }
+
+    spanCharacterLives.innerHTML = characterLives
+    spanEnemyCharacterLives.innerHTML = enemyLives
+
+    createMessage()
+    getWinner()
 }
 
 function createMessage() {
@@ -74,6 +146,14 @@ function createMessage() {
     newMessage.innerHTML = "Your pet attacks with " + petAttack + ". The enemy's pet attack with " + enemyAttack + " - " + resultFight
     
     sectionMessage.appendChild(newMessage)
+}
+
+function getWinner() {
+    if (enemyLives == 0) {
+        createFinalMessage("Congrats!!! You are the WINNER! 🏆⭐")
+    } else if (characterLives == 0) {
+        createFinalMessage("I'm sorry, you LOSE ... 🫂⛈️")
+    }
 }
 
 function createFinalMessage(result) {
@@ -96,78 +176,6 @@ function createFinalMessage(result) {
     buttonRestart.style.display = "block"
 }
 
-function randomChoice(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-function getFightResult() {
-
-    let spanPetLives = document.getElementById("pet-selected-lives")
-    let spanEnemyPetLives = document.getElementById("enemy-pet-lives")
-
-    if(petAttack == enemyAttack) {
-        resultFight = "It's a TIE 🙈"
-
-    } else if(petAttack == "Fire 🔥" && enemyAttack == "Earth 🌱") {
-        resultFight = "You WIN 🥳"
-        enemyLives--
-
-    } else if(petAttack == "Water 💧" && enemyAttack == "Fire 🔥") {
-        resultFight = "You WIN 🥳"
-        enemyLives--
-
-    } else if(petAttack == "Earth 🌱" && enemyAttack == "Water 💧") {
-        resultFight = "You WIN 🥳"
-        enemyLives--
-
-    } else {
-        resultFight = "You LOSE ☠️"
-        petLives--
-    }
-
-    spanPetLives.innerHTML = petLives
-    spanEnemyPetLives.innerHTML = enemyLives
-
-    createMessage()
-    getWinner()
-}
-
-function getWinner() {
-    if (enemyLives == 0) {
-        createFinalMessage("Congrats!!! You are the WINNER! 🏆⭐")
-    } else if (petLives == 0) {
-        createFinalMessage("I'm sorry, you LOSE ... 🫂⛈️")
-    }
-}
-
-function getEnemyAttack() {
-    let randomAttack = randomChoice(1, 3)
-
-    if (randomAttack == 1) {
-        enemyAttack = "Fire 🔥"
-    } else if (randomAttack == 2) {
-        enemyAttack = "Water 💧"
-    } else {
-        enemyAttack = "Earth 🌱"
-    }
-
-    getFightResult()
-}
-
-function fireAttack() {
-    petAttack = "Fire 🔥"
-    getEnemyAttack()
-}
-
-function waterAttack() {
-    petAttack = "Water 💧"
-    getEnemyAttack()
-}
-
-function earthAttack() {
-    petAttack = "Earth 🌱"
-    getEnemyAttack()
-}
 
 function restartGame() {
     location.reload()
