@@ -4,3 +4,25 @@
     height: 50px;
     background-color: tomato;
 }
+
+#pet-selection {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.mokepon-card {
+    box-sizing: border-box;
+    background-color: aquamarine;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid chocolate;
+}
+
+input {
+    display: none;
+}
