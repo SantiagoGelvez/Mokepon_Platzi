@@ -56,7 +56,7 @@ function selectCharacter() {
         let sectionAttackSelection = document.getElementById("attack-selection")
         let sectionCharacterSelection = document.getElementById("character-selection")
         
-        sectionAttackSelection.style.display = "block"
+        sectionAttackSelection.style.display = "flex"
         getEnemyCharacter()
         sectionCharacterSelection.style.display = "none"
     }
@@ -140,12 +140,19 @@ function getFightResult() {
 }
 
 function createMessage() {
-    let sectionMessage = document.getElementById("messages")
-    
-    let newMessage = document.createElement("p")
-    newMessage.innerHTML = "Your pet attacks with " + petAttack + ". The enemy's pet attack with " + enemyAttack + " - " + resultFight
-    
-    sectionMessage.appendChild(newMessage)
+    let sectionMessage = document.getElementById("result")
+    let sectionCharacterAttacks = document.getElementById("character-attacks")
+    let sectionEnemyAttacks = document.getElementById("enemy-attacks")
+
+    let newCharacterAttack = document.createElement("p")
+    let newEnemyAttack = document.createElement("p")
+
+    sectionMessage.innerHTML = resultFight
+    newCharacterAttack.innerHTML = petAttack
+    newEnemyAttack.innerHTML = enemyAttack
+
+    sectionCharacterAttacks.appendChild(newCharacterAttack)
+    sectionEnemyAttacks.appendChild(newEnemyAttack)
 }
 
 function getWinner() {
@@ -157,12 +164,9 @@ function getWinner() {
 }
 
 function createFinalMessage(result) {
-    let sectionMessage = document.getElementById("messages")
+    let sectionMessage = document.getElementById("result")
     
-    let newMessage = document.createElement("p")
-    newMessage.innerHTML = result
-    
-    sectionMessage.appendChild(newMessage)
+    sectionMessage.innerHTML = result
 
     let buttonFire = document.getElementById("button-fire")
     buttonFire.disabled = true

@@ -59,3 +59,37 @@ input {
     font-family: "Anta", sans-serif;
     margin-top: 20px;
 }
+
+#attack-selection {
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-attack {
+    background-color: white;
+    width: 112px;
+    height: 36px;
+    border-radius: 8px;
+    font-family: "Anta", sans-serif;
+}
+
+#messages {
+    width: 312px;
+    padding: 16px;
+    background-color: #FCE38A;
+    border-radius: 16px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button-restart {
+    background-color: #95E1D3;
+    border: 2px solid white;
+    border-radius: 12px;
+    width: 200px;
+    padding: 8px;
+    color: black;
+    font-family: "Anta", sans-serif;
+}
