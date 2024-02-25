@@ -48,3 +48,14 @@ body {
 input {
     display: none;
 }
+
+#button-select-character {
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: #EAFFD0;
+    font-family: "Anta", sans-serif;
+    margin-top: 20px;
+}
