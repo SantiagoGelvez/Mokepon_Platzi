@@ -79,17 +79,17 @@ function getEnemyCharacter() {
 
 
 function fireAttack() {
-    petAttack = "Fire 🔥"
+    petAttack = "🔥 Fire 🔥"
     getEnemyAttack()
 }
 
 function waterAttack() {
-    petAttack = "Water 💧"
+    petAttack = "💧 Water 💧"
     getEnemyAttack()
 }
 
 function earthAttack() {
-    petAttack = "Earth 🌱"
+    petAttack = "🌱 Earth 🌱"
     getEnemyAttack()
 }
 
@@ -97,11 +97,11 @@ function getEnemyAttack() {
     let randomAttack = randomChoice(1, 3)
 
     if (randomAttack == 1) {
-        enemyAttack = "Fire 🔥"
+        enemyAttack = "🔥 Fire 🔥"
     } else if (randomAttack == 2) {
-        enemyAttack = "Water 💧"
+        enemyAttack = "💧 Water 💧"
     } else {
-        enemyAttack = "Earth 🌱"
+        enemyAttack = "🌱 Earth 🌱"
     }
 
     getFightResult()
@@ -115,15 +115,15 @@ function getFightResult() {
     if(petAttack == enemyAttack) {
         resultFight = "It's a TIE 🙈"
 
-    } else if(petAttack == "Fire 🔥" && enemyAttack == "Earth 🌱") {
+    } else if(petAttack == "🔥 Fire 🔥" && enemyAttack == "🌱 Earth 🌱") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
-    } else if(petAttack == "Water 💧" && enemyAttack == "Fire 🔥") {
+    } else if(petAttack == "💧 Water 💧" && enemyAttack == "🔥 Fire 🔥") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
-    } else if(petAttack == "Earth 🌱" && enemyAttack == "Water 💧") {
+    } else if(petAttack == "🌱 Earth 🌱" && enemyAttack == "💧 Water 💧") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
@@ -149,7 +149,10 @@ function createMessage() {
 
     sectionMessage.innerHTML = resultFight
     newCharacterAttack.innerHTML = petAttack
+    newCharacterAttack.style.textAlign = "center"    
+    
     newEnemyAttack.innerHTML = enemyAttack
+    newEnemyAttack.style.textAlign = "center"
 
     sectionCharacterAttacks.appendChild(newCharacterAttack)
     sectionEnemyAttacks.appendChild(newEnemyAttack)

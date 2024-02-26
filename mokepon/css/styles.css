@@ -93,3 +93,24 @@ input {
     color: black;
     font-family: "Anta", sans-serif;
 }
+
+.attacks {
+    display: grid;
+    grid-template-columns: 100px 100px;
+}
+
+#character-selected-lives {
+    text-align: center;
+}
+
+#character-selected {
+    text-align: center;
+}
+
+#enemy-character-lives {
+    text-align: center;
+}
+
+#enemy-character {
+    text-align: center;
+}
