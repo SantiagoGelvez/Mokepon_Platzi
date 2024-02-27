@@ -34,7 +34,7 @@ body {
     height: 100px;
     padding: 10px;
     margin: 10px;
-    border: 2px solid #EAFFD0;
+    border: 2px solid transparent;
     border-radius: 12px;
     display: flex;
     justify-content: space-evenly;
@@ -47,6 +47,15 @@ body {
 
 input {
     display: none;
+}
+
+input:hover + label{
+    border: 2px solid #EAFFD0
+}
+
+input:checked + label{
+    background-color: #95E1D3;
+    color: black
 }
 
 #button-select-character {
@@ -95,17 +104,22 @@ input {
 }
 
 .attacks {
+    gap: 20px;
     display: grid;
     grid-template-columns: 100px 100px;
 }
 
 #character-selected-lives, #enemy-character-lives {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 12px 0px;
 }
 
 #character-selected, #enemy-character {
     text-align: center;
+    font-size: 20px;
+    margin: 12px 0px;
 }
 
 #attack-buttons {
