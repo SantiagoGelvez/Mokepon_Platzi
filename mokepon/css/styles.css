@@ -99,18 +99,25 @@ input {
     grid-template-columns: 100px 100px;
 }
 
-#character-selected-lives {
+#character-selected-lives, #enemy-character-lives {
+    text-align: center;
+    font-size: 24px;
+}
+
+#character-selected, #enemy-character {
     text-align: center;
 }
 
-#character-selected {
-    text-align: center;
+#attack-buttons {
+    display: flex;
 }
 
-#enemy-character-lives {
-    text-align: center;
-}
-
-#enemy-character {
-    text-align: center;
+@media (max-width: 640px) {
+    .cards {
+        flex-direction: column;
+    }
+    
+    #attack-buttons {
+        flex-direction: column;
+    }
 }
