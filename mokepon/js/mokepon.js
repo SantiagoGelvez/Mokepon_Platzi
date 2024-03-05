@@ -21,11 +21,61 @@ const spanEnemyCharacter = document.getElementById("enemy-character")
 const spanEnemyCharacterLives = document.getElementById("enemy-character-lives")
 
 
+let mokepones = []
 let petAttack = null
 let enemyAttack = null
 let resultFight = null
 let characterLives = 3
 let enemyLives = 3
+
+
+class Mokepon {
+    constructor(name, photo, life) {
+        this.name = name
+        this.photo = photo
+        this.life = life
+        this.attacks = []
+    }
+}
+
+let aang = new Mokepon('Aang', './assets/aang.webp', 3)
+let katara = new Mokepon('Katara', './assets/katara.webp', 3)
+let toph = new Mokepon('Toph', './assets/toph.webp', 3)
+let zuko = new Mokepon('Zuko', './assets/zuko.webp', 3)
+
+aang.attacks.push(
+    {nombre: '💨 Air 💨', id: 'button-air'},
+    {nombre: '💨 Air 💨', id: 'button-air'},
+    {nombre: '💧 Water 💧', id: 'button-water'},
+    {nombre: '🌱 Earth 🌱', id: 'button-earth'},
+    {nombre: '🔥 Fire 🔥', id: 'button-fire'},
+)
+
+katara.attacks.push(
+    {nombre: '💧 Water 💧', id: 'button-water'},
+    {nombre: '💧 Water 💧', id: 'button-water'},
+    {nombre: '🌱 Earth 🌱', id: 'button-earth'},
+    {nombre: '🔥 Fire 🔥', id: 'button-fire'},
+    {nombre: '💨 Air 💨', id: 'button-air'},
+)
+
+toph.attacks.push(
+    {nombre: '🌱 Earth 🌱', id: 'button-earth'},
+    {nombre: '🌱 Earth 🌱', id: 'button-earth'},
+    {nombre: '🔥 Fire 🔥', id: 'button-fire'},
+    {nombre: '💨 Air 💨', id: 'button-air'},
+    {nombre: '💧 Water 💧', id: 'button-water'},
+)
+
+zuko.attacks.push(
+    {nombre: '🔥 Fire 🔥', id: 'button-fire'},
+    {nombre: '🔥 Fire 🔥', id: 'button-fire'},
+    {nombre: '💨 Air 💨', id: 'button-air'},
+    {nombre: '💧 Water 💧', id: 'button-water'},
+    {nombre: '🌱 Earth 🌱', id: 'button-earth'},
+)
+
+mokepones.push(aang, katara, toph, zuko)
 
 function randomChoice(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)

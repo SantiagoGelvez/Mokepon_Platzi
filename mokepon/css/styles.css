@@ -124,6 +124,7 @@ input:checked + label{
 
 #attack-buttons {
     display: flex;
+    gap: 10px;
 }
 
 @media (max-width: 640px) {
