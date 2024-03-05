@@ -1,3 +1,26 @@
+const inputKatara = document.getElementById("katara")
+const inputAnng = document.getElementById("aang")
+const inputToph = document.getElementById("toph")
+const inputZuko = document.getElementById("zuko")
+
+const buttonWater = document.getElementById("button-water")
+const buttonFire = document.getElementById("button-fire")
+const buttonEarth = document.getElementById("button-earth")
+const buttonRestart = document.getElementById("button-restart")
+const buttonSelectCharacter = document.getElementById("button-select-character")
+
+const sectionAttackSelection = document.getElementById("attack-selection")
+const sectionCharacterAttacks = document.getElementById("character-attacks")
+const sectionCharacterSelection = document.getElementById("character-selection")
+const sectionMessage = document.getElementById("result")
+const sectionEnemyAttacks = document.getElementById("enemy-attacks")
+
+const spanCharacterSelected = document.getElementById("character-selected")
+const spanCharacterLives = document.getElementById("character-selected-lives")
+const spanEnemyCharacter = document.getElementById("enemy-character")
+const spanEnemyCharacterLives = document.getElementById("enemy-character-lives")
+
+
 let petAttack = null
 let enemyAttack = null
 let resultFight = null
@@ -9,53 +32,37 @@ function randomChoice(min, max) {
 }
 
 function initGame() {
-    let sectionAttackSelection = document.getElementById("attack-selection")
     sectionAttackSelection.style.display = "none"
-
-    let buttonSelectCharacter = document.getElementById("button-select-character")
     buttonSelectCharacter.addEventListener("click", selectCharacter)
     
-    let buttonFire = document.getElementById("button-fire")
     buttonFire.addEventListener("click", fireAttack)
-    let buttonWater = document.getElementById("button-water")
     buttonWater.addEventListener("click", waterAttack)
-    let buttonEarth = document.getElementById("button-earth")
     buttonEarth.addEventListener("click", earthAttack)
 
-    let buttonRestart = document.getElementById("button-restart")
     buttonRestart.addEventListener("click", restartGame)
     buttonRestart.style.display = "none"
 }
 
 function selectCharacter() {
     let isCharacterSelected = false
-    let inputAnng = document.getElementById("aang")
-    let inputKatara = document.getElementById("katara")
-    let inputToph = document.getElementById("toph")
-    let inputZuko = document.getElementById("zuko")
-
-    let spancharacterSelected = document.getElementById("character-selected")
 
     if (inputAnng.checked) {
-        spancharacterSelected.innerHTML = "Aang"
+        spanCharacterSelected.innerHTML = "Aang"
         isCharacterSelected = true
     } else if (inputKatara.checked) {
-        spancharacterSelected.innerHTML = "Katara"
+        spanCharacterSelected.innerHTML = "Katara"
         isCharacterSelected = true
     } else if (inputToph.checked) {
-        spancharacterSelected.innerHTML = "Toph"
+        spanCharacterSelected.innerHTML = "Toph"
         isCharacterSelected = true
     } else if (inputZuko.checked) {
-        spancharacterSelected.innerHTML = "Zuko"
+        spanCharacterSelected.innerHTML = "Zuko"
         isCharacterSelected = true
     } else {
         alert("Select a character")
     }
 
     if (isCharacterSelected) {
-        let sectionAttackSelection = document.getElementById("attack-selection")
-        let sectionCharacterSelection = document.getElementById("character-selection")
-        
         sectionAttackSelection.style.display = "flex"
         getEnemyCharacter()
         sectionCharacterSelection.style.display = "none"
@@ -64,7 +71,6 @@ function selectCharacter() {
 
 function getEnemyCharacter() {
     let randomCharacter = randomChoice(1, 4)
-    let spanEnemyCharacter = document.getElementById("enemy-character")
     
     if (randomCharacter == 1) {
         spanEnemyCharacter.innerHTML = "Aang"
@@ -76,7 +82,6 @@ function getEnemyCharacter() {
         spanEnemyCharacter.innerHTML = "Zuko"
     }
 }
-
 
 function fireAttack() {
     petAttack = "🔥 Fire 🔥"
@@ -108,22 +113,18 @@ function getEnemyAttack() {
 }
 
 function getFightResult() {
-
-    let spanCharacterLives = document.getElementById("character-selected-lives")
-    let spanEnemyCharacterLives = document.getElementById("enemy-character-lives")
-
-    if(petAttack == enemyAttack) {
+    if (petAttack == enemyAttack) {
         resultFight = "It's a TIE 🙈"
 
-    } else if(petAttack == "🔥 Fire 🔥" && enemyAttack == "🌱 Earth 🌱") {
+    } else if (petAttack == "🔥 Fire 🔥" && enemyAttack == "🌱 Earth 🌱") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
-    } else if(petAttack == "💧 Water 💧" && enemyAttack == "🔥 Fire 🔥") {
+    } else if (petAttack == "💧 Water 💧" && enemyAttack == "🔥 Fire 🔥") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
-    } else if(petAttack == "🌱 Earth 🌱" && enemyAttack == "💧 Water 💧") {
+    } else if (petAttack == "🌱 Earth 🌱" && enemyAttack == "💧 Water 💧") {
         resultFight = "You WIN 🥳"
         enemyLives--
 
@@ -140,10 +141,6 @@ function getFightResult() {
 }
 
 function createMessage() {
-    let sectionMessage = document.getElementById("result")
-    let sectionCharacterAttacks = document.getElementById("character-attacks")
-    let sectionEnemyAttacks = document.getElementById("enemy-attacks")
-
     let newCharacterAttack = document.createElement("p")
     let newEnemyAttack = document.createElement("p")
 
@@ -167,22 +164,15 @@ function getWinner() {
 }
 
 function createFinalMessage(result) {
-    let sectionMessage = document.getElementById("result")
-    
     sectionMessage.innerHTML = result
 
-    let buttonFire = document.getElementById("button-fire")
     buttonFire.disabled = true
-    let buttonWater = document.getElementById("button-water")
     buttonWater.disabled = true
-    let buttonEarth = document.getElementById("button-earth")
     buttonEarth.disabled = true
 
-    let buttonRestart = document.getElementById("button-restart")
     buttonRestart.addEventListener("click", restartGame)
     buttonRestart.style.display = "block"
 }
-
 
 function restartGame() {
     location.reload()
