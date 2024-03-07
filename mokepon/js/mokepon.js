@@ -20,11 +20,14 @@ const spanCharacterLives = document.getElementById("character-selected-lives")
 const spanEnemyCharacter = document.getElementById("enemy-character")
 const spanEnemyCharacterLives = document.getElementById("enemy-character-lives")
 
+const cardsContainer = document.getElementById('cards-container')
+
 
 let mokepones = []
 let petAttack = null
 let enemyAttack = null
 let resultFight = null
+let mokeponOption = null
 let characterLives = 3
 let enemyLives = 3
 
@@ -42,6 +45,10 @@ let aang = new Mokepon('Aang', './assets/aang.webp', 3)
 let katara = new Mokepon('Katara', './assets/katara.webp', 3)
 let toph = new Mokepon('Toph', './assets/toph.webp', 3)
 let zuko = new Mokepon('Zuko', './assets/zuko.webp', 3)
+let sokka = new Mokepon('Sokka', './assets/sokka.webp', 3)
+let azula = new Mokepon('Azula', './assets/azula.webp', 3)
+let suki = new Mokepon('Suki', './assets/suki.webp', 3)
+
 
 aang.attacks.push(
     {nombre: '💨 Air 💨', id: 'button-air'},
@@ -75,7 +82,7 @@ zuko.attacks.push(
     {nombre: '🌱 Earth 🌱', id: 'button-earth'},
 )
 
-mokepones.push(aang, katara, toph, zuko)
+mokepones.push(aang, katara, toph, zuko, sokka, azula, suki)
 
 function randomChoice(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -83,6 +90,20 @@ function randomChoice(min, max) {
 
 function initGame() {
     sectionAttackSelection.style.display = "none"
+
+    mokepones.forEach((mokepon) => {
+        console.log(mokepon.name)
+        mokeponOption = `
+        <input type="radio" name="character" id="${mokepon.name}">
+        <label class="character-card" for="${mokepon.name}">
+            <p>${mokepon.name}</p>
+            <img src="${mokepon.photo}" alt="${mokepon.name}">
+        </label>
+        `
+
+        cardsContainer.innerHTML += mokeponOption
+    })
+
     buttonSelectCharacter.addEventListener("click", selectCharacter)
     
     buttonFire.addEventListener("click", fireAttack)
